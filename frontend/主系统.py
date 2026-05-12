@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import os
 from datetime import datetime
 
 st.set_page_config(
@@ -68,7 +69,7 @@ with st.sidebar:
 
 # 获取API地址（从设置页面共享的 session_state）
 if 'api_url' not in st.session_state:
-    st.session_state.api_url = "http://localhost:8000"
+    st.session_state.api_url = os.getenv("API_URL", "http://localhost:8000")
 api_url = st.session_state.api_url
 
 

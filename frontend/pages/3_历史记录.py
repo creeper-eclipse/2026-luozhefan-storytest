@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import os
 
 st.set_page_config(page_title="历史记录", page_icon="📜", layout="wide")
 
@@ -48,7 +49,7 @@ st.markdown("""
 st.title("📜 生成历史记录")
 
 if 'api_url' not in st.session_state:
-    st.session_state.api_url = "http://localhost:8000"
+    st.session_state.api_url = os.getenv("API_URL", "http://localhost:8000")
 api_url = st.session_state.api_url
 
 with st.sidebar:

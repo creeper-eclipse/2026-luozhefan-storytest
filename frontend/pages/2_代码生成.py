@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(page_title="代码生成", page_icon="💻", layout="wide")
 
@@ -47,7 +48,7 @@ st.markdown("""
 st.title("💻 AI 代码生成")
 
 if 'api_url' not in st.session_state:
-    st.session_state.api_url = "http://localhost:8000"
+    st.session_state.api_url = os.getenv("API_URL", "http://localhost:8000")
 api_url = st.session_state.api_url
 
 with st.sidebar:

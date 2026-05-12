@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(
     page_title="系统设置",
@@ -53,7 +54,7 @@ st.markdown("在此配置后端 API 连接和 LLM 大模型参数，修改后需
 
 # 获取当前 API 地址（与主页共享）
 if 'api_url' not in st.session_state:
-    st.session_state.api_url = "http://localhost:8000"
+    st.session_state.api_url = os.getenv("API_URL", "http://localhost:8000")
 api_url = st.session_state.api_url
 
 with st.sidebar:
