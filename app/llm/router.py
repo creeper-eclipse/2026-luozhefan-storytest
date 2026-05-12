@@ -47,7 +47,8 @@ async def generate_with_llm(request: LLMGenerateRequest):
         generator = LLMGenerator()
         test_cases = generator.generate_test_cases(
             request.user_story,
-            request.acceptance_criteria
+            request.acceptance_criteria,
+            request.methods
         )
 
         for tc in test_cases:
