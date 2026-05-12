@@ -38,9 +38,8 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    import os
-    # 优先获取FC环境变量中的端口，其次用9000（FC标准端口）
-    port = int(os.getenv("FC_SERVER_PORT", 9000)) 
-    print(f"启动测试用例辅助生成系统，端口: {port}")
-    # host必须为0.0.0.0，确保FC可以监听请求
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    print("=" * 50)
+    print("测试用例辅助生成系统启动中...")
+    print("访问 http://localhost:8000 查看API文档")
+    print("=" * 50)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
