@@ -2,9 +2,12 @@ import sqlite3
 import json
 from datetime import datetime
 from typing import List, Optional
+import os
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent.parent.parent / "data" / "history.db"
+DATA_ROOT = Path(os.getenv("DATA_DIR", "/tmp/data"))
+DATA_ROOT.mkdir(parents=True, exist_ok=True)
+DB_PATH = DATA_ROOT / "history.db"
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
