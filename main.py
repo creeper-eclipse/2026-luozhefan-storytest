@@ -28,9 +28,10 @@ app.add_middleware(
 )
 
 # 数据存储目录
-DATA_DIR = "data"
-if not os.path.exists(DATA_DIR):
-    os.makedirs(DATA_DIR)
+DATA_DIR = os.getenv("DATA_DIR", "./data")
+EXPORT_DIR = os.getenv("EXPORT_DIR", "./exports")
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(EXPORT_DIR, exist_ok=True)
 
 @app.get("/")
 async def root():
